@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Button } from '../components/Button';
+import Button2 from '../components/Button2'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -10,6 +11,7 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
+    onClick: { action: "I've been clicked"}
   },
 } as ComponentMeta<typeof Button>;
 
@@ -39,3 +41,8 @@ Small.args = {
   size: 'small',
   label: 'Button',
 };
+
+export const MyButton = Template.bind({});
+MyButton.args = {
+  label: 'Home Made'
+}
