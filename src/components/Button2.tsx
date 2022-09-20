@@ -1,9 +1,13 @@
-import React, { JSXElementConstructor, ReactEventHandler, ReactNode } from "react";
+import React, { ReactEventHandler, ReactNode } from "react";
 // had to cast imported button as MUIButton so the names won't conflict
 import { Button as MUIButton } from '@mui/material';
+// import sxProp and theme from MUI for styling
+import { SxProps, Theme } from '@mui/system';
+import { JsxElement } from "typescript";
+
 
 //define props for button component
-interface Button2Props {
+export interface Button2Props {
     /**
      * Unique identifier for component
      */
@@ -11,7 +15,7 @@ interface Button2Props {
     /**
      * Set the background color of the button
      */
-    color?:"inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning" | undefined;
+    type?:"inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning" | undefined;
     /**
      * Set the display text of the button 
      */
@@ -29,17 +33,21 @@ interface Button2Props {
      */
     variant?: "text" | "outlined" | "contained" | undefined;
     /**
-     * Set custom styles with optional object 
+     * Set custom styles with SxxProps and Theme components from MUI 
      */
-    sx?: object;
+    sx?: SxProps<Theme>;
     /**
      * Set Icon rendered at beginning/left border of button  
      */
     startIcon?: ReactNode | undefined;
     /**
-     * Set Icon rendered at beginning/left border of button  
+     * Trigger React mouse event when cursor clicks button  
      */
     onClick?: ReactEventHandler;
+    /**
+     * Trigger React mouse event when cursor hoovers over button  
+     */
+    onHover?: ReactEventHandler;
 }
 
 
@@ -47,23 +55,24 @@ interface Button2Props {
 const Button2 = ({
     id,
     label,
-    color = 'primary',
+    sx,
+    type = 'primary',
     size = 'large',
     disabled = false,
-    variant = undefined,
-    sx = {},
+    variant = 'contained',
     startIcon,
     onClick
 
-}: Button2Props ) => {
+}: Button2Props ): JSX.Element => {
     return (
         <MUIButton
             id={id}
-            color={color}
             size={size}
             disabled={disabled}
             variant={variant}
-            sx={sx}
+            sx={{
+                type
+            }}
             onClick={onClick}
         >
             {label}
