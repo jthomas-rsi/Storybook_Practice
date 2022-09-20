@@ -3,10 +3,9 @@ import React, { ReactEventHandler, ReactNode } from "react";
 import { Button as MUIButton } from '@mui/material';
 // import sxProp and theme from MUI for styling
 import { SxProps, Theme } from '@mui/system';
-import { JsxElement } from "typescript";
 
 
-//define props for button component
+//define props interface for button component
 export interface Button2Props {
     /**
      * Unique identifier for component
@@ -44,18 +43,25 @@ export interface Button2Props {
      * Trigger React mouse event when cursor clicks button  
      */
     onClick?: ReactEventHandler;
-    /**
-     * Trigger React mouse event when cursor hoovers over button  
-     */
-    onHover?: ReactEventHandler;
+}
+
+//define initial styling for Button component
+const initialBtnStyle = {
+        backgroundColor: 'palette.primary.dark',
+        minWidth: 20,
+        maxWidth: 'fit-content',
+        borderRadius: 10,
+        color: 'palette.common.white',
+        boxShadow: 2,
+        ':hover': { backgroundColor: 'purple'}
 }
 
 
-//define button component
+//define button component passing in props
 const Button2 = ({
     id,
     label,
-    sx,
+    sx = initialBtnStyle,
     type = 'primary',
     size = 'large',
     disabled = false,
@@ -71,7 +77,8 @@ const Button2 = ({
             disabled={disabled}
             variant={variant}
             sx={{
-                type
+                type,
+                ...sx
             }}
             onClick={onClick}
         >
