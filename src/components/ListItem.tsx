@@ -19,8 +19,7 @@ export interface ListItemProps {
   checked?: boolean;
   starred?: boolean;
   itemText?: string;
-  children: ReactNode;
-  // secondaryAction: ReactNode;
+  secondaryAction: ReactNode;
 }
 
 const ListItem = ({
@@ -28,21 +27,17 @@ const ListItem = ({
   itemText = "Item text",
   checked = true,
   starred = true,
-  children,
-}: // secondaryAction,
-ListItemProps): JSX.Element => {
-  //create conditional rendering for checked & starred
-
+}: ListItemProps): JSX.Element => {
+  //conditional rendering for checked & starred props
   return (
     <MUIListItem
       id={id}
-      // secondaryAction
+      secondaryAction={starred ? <StarOutlineIcon /> : <StarIcon />}
     >
       <ListItemIcon>
         {checked ? <CheckBoxOutlineBlankIcon /> : <CheckBoxIcon />}
       </ListItemIcon>
       <ListItemText primary={itemText} />
-      {starred ? <StarOutlineIcon /> : <StarIcon />}
     </MUIListItem>
   );
 };
