@@ -19,7 +19,7 @@ export interface ListItemProps {
   starred?: boolean;
   itemText?: string;
   secondaryAction: ReactNode;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  //   onClick: React.MouseEventHandler<HTMLButtonElement>;
   handleCheck(): void;
   handleStar(): void;
 }

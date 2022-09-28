@@ -6,6 +6,13 @@ import ListItem, { ListItemProps } from "../components/ListItem";
 export default {
   title: "Example/Practice/ListItem",
   component: ListItem,
+  parameters: { controls: { sort: "requiredFirst" } },
+  argTypes: {
+    id: { control: false },
+    secondaryAction: { control: false },
+    handleCheck: { action: "check box clicked" },
+    handleStar: { action: "star icon clicked" },
+  },
 } as Meta;
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />;
