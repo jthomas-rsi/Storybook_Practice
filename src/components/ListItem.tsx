@@ -21,7 +21,7 @@ export interface ListItemProps {
   starred?: boolean;
   itemText?: string;
   secondaryAction: ReactNode;
-  divider?: boolean;
+  divider: boolean;
   sx?: SxProps<Theme>;
   //   onClick: React.MouseEventHandler<HTMLButtonElement>;
   handleCheck(): void;
@@ -75,7 +75,7 @@ const ListItem = ({
         )}
       </ListItemIcon>
       <ListItemText
-        primary={itemText}
+        primary={checkClick ? itemText : `${itemText} ( Important Task )`}
         sx={{
           textDecoration: starClick ? ` ` : `line-through`,
         }}
