@@ -26,12 +26,12 @@ DefaultItem.args = {
 export const CheckedItem = Template.bind({});
 CheckedItem.args = {
   id: "checkedI",
-  itemText: "When checked the task becomes marked => ",
-  checked: false,
+  itemText: "When checked the task becomes marked",
+  checked: true,
 };
 export const StarredItem = Template.bind({});
 StarredItem.args = {
   id: "starred",
   itemText: "When starred the task is struck out",
-  starred: false,
+  starred: true,
 };

@@ -20,19 +20,19 @@ export interface ListItemProps {
   checked?: boolean;
   starred?: boolean;
   itemText?: string;
-  secondaryAction: ReactNode;
-  divider: boolean;
+  secondaryAction?: ReactNode;
+  divider?: boolean;
   sx?: SxProps<Theme>;
   //   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  handleCheck(): void;
-  handleStar(): void;
+  handleCheck?(): void;
+  handleStar?(): void;
 }
 
 const ListItem = ({
   id,
   itemText = "Item text",
-  checked = true,
-  starred = true,
+  checked = false,
+  starred = false,
   divider = true,
   sx,
 }: ListItemProps): JSX.Element => {
@@ -53,11 +53,11 @@ const ListItem = ({
       secondaryAction={
         starClick ? (
           <IconButton onClick={() => handleStar()}>
-            <StarOutlineIcon />
+            <StarIcon />
           </IconButton>
         ) : (
           <IconButton onClick={() => handleStar()}>
-            <StarIcon />
+            <StarOutlineIcon />
           </IconButton>
         )
       }
@@ -66,18 +66,18 @@ const ListItem = ({
       <ListItemIcon>
         {checkClick ? (
           <IconButton onClick={() => handleCheck()}>
-            <CheckBoxOutlineBlankIcon />{" "}
+            <CheckBoxIcon />
           </IconButton>
         ) : (
           <IconButton onClick={() => handleCheck()}>
-            <CheckBoxIcon />
+            <CheckBoxOutlineBlankIcon />{" "}
           </IconButton>
         )}
       </ListItemIcon>
       <ListItemText
-        primary={checkClick ? itemText : `${itemText} ( Important Task )`}
+        primary={checkClick ? `${itemText} ( Important Task )` : itemText}
         sx={{
-          textDecoration: starClick ? ` ` : `line-through`,
+          textDecoration: starClick ? `line-through` : ` `,
         }}
       />
     </MUIListItem>
