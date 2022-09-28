@@ -1,7 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 
 import {
-  List,
   ListItem as MUIListItem,
   ListItemIcon,
   ListItemText,
@@ -20,6 +19,9 @@ export interface ListItemProps {
   starred?: boolean;
   itemText?: string;
   secondaryAction: ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  handleCheck(): void;
+  handleStar(): void;
 }
 
 const ListItem = ({
@@ -28,14 +30,41 @@ const ListItem = ({
   checked = true,
   starred = true,
 }: ListItemProps): JSX.Element => {
-  //conditional rendering for checked & starred props
+  const [checkClick, setCheckClick] = useState(checked);
+  const [starClick, setStarClick] = useState(starred);
+
+  const handleCheck = () => {
+    setCheckClick(!checkClick);
+  };
+  const handleStar = () => {
+    setStarClick(!starClick);
+  };
+
   return (
     <MUIListItem
       id={id}
-      secondaryAction={starred ? <StarOutlineIcon /> : <StarIcon />}
+      secondaryAction={
+        starClick ? (
+          <IconButton onClick={() => handleStar()}>
+            <StarOutlineIcon />
+          </IconButton>
+        ) : (
+          <IconButton onClick={() => handleStar()}>
+            <StarIcon />
+          </IconButton>
+        )
+      }
     >
       <ListItemIcon>
-        {checked ? <CheckBoxOutlineBlankIcon /> : <CheckBoxIcon />}
+        {checkClick ? (
+          <IconButton onClick={() => handleCheck()}>
+            <CheckBoxOutlineBlankIcon />{" "}
+          </IconButton>
+        ) : (
+          <IconButton onClick={() => handleCheck()}>
+            <CheckBoxIcon />
+          </IconButton>
+        )}
       </ListItemIcon>
       <ListItemText primary={itemText} />
     </MUIListItem>
