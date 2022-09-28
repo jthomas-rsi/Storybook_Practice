@@ -7,6 +7,8 @@ import {
   IconButton,
 } from "@mui/material";
 
+import { SxProps, Theme } from "@mui/system";
+
 //ListItem start and ending icons
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
@@ -19,6 +21,8 @@ export interface ListItemProps {
   starred?: boolean;
   itemText?: string;
   secondaryAction: ReactNode;
+  divider?: boolean;
+  sx?: SxProps<Theme>;
   //   onClick: React.MouseEventHandler<HTMLButtonElement>;
   handleCheck(): void;
   handleStar(): void;
@@ -29,6 +33,8 @@ const ListItem = ({
   itemText = "Item text",
   checked = true,
   starred = true,
+  divider = true,
+  sx,
 }: ListItemProps): JSX.Element => {
   const [checkClick, setCheckClick] = useState(checked);
   const [starClick, setStarClick] = useState(starred);
@@ -43,6 +49,7 @@ const ListItem = ({
   return (
     <MUIListItem
       id={id}
+      divider={divider}
       secondaryAction={
         starClick ? (
           <IconButton onClick={() => handleStar()}>
@@ -54,6 +61,7 @@ const ListItem = ({
           </IconButton>
         )
       }
+      sx={sx}
     >
       <ListItemIcon>
         {checkClick ? (
@@ -66,7 +74,12 @@ const ListItem = ({
           </IconButton>
         )}
       </ListItemIcon>
-      <ListItemText primary={itemText} />
+      <ListItemText
+        primary={itemText}
+        sx={{
+          textDecoration: starClick ? ` ` : `line-through`,
+        }}
+      />
     </MUIListItem>
   );
 };

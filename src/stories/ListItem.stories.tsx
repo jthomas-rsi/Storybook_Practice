@@ -10,6 +10,7 @@ export default {
   argTypes: {
     id: { control: false },
     secondaryAction: { control: false },
+    sx: { control: false },
     handleCheck: { action: "check box clicked" },
     handleStar: { action: "star icon clicked" },
   },
@@ -31,6 +32,6 @@ CheckedItem.args = {
 export const StarredItem = Template.bind({});
 StarredItem.args = {
   id: "starred",
-  itemText: "I'm starred look right ---------->",
+  itemText: "I'm starred look right",
   starred: false,
 };
