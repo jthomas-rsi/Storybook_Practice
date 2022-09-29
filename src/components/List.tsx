@@ -2,10 +2,10 @@ import React from "react";
 
 import {
   List as MUIList,
+  ListSubheader,
   Skeleton,
   Stack,
   Typography,
-  Box,
 } from "@mui/material";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 
@@ -28,10 +28,11 @@ const List = ({
 }: ListProps): JSX.Element => {
   if (loading) {
     return (
-      <Stack>
-        <Skeleton width={"50%"} height={60} />
-        <Skeleton width={"50%"} height={60} />
-        <Skeleton width={"50%"} height={60} />
+      <Stack style={{ justifyContent: "center", alignItems: "center" }}>
+        <Skeleton width={"100%"} height={60} />
+        <Skeleton width={"100%"} height={60} />
+        <Skeleton width={"100%"} height={60} />
+        <Skeleton width={"100%"} height={60} />
       </Stack>
     );
   }
@@ -53,7 +54,13 @@ const List = ({
   }
   return (
     <div>
-      <MUIList>
+      <MUIList
+        subheader={
+          <ListSubheader>
+            <Typography variant="h6">Things To Do:</Typography>
+          </ListSubheader>
+        }
+      >
         {dummyTasks.map((item) => (
           <ListItem
             id={item.id}

@@ -23,7 +23,6 @@ export interface ListItemProps {
   secondaryAction?: ReactNode;
   divider?: boolean;
   sx?: SxProps<Theme>;
-  //   onClick: React.MouseEventHandler<HTMLButtonElement>;
   handleCheck?(): void;
   handleStar?(): void;
 }
