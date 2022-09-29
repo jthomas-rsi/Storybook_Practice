@@ -45,9 +45,9 @@ const List = ({
           flexDirection: "column",
         }}
       >
-        <InsertEmoticonIcon sx={{ fontSize: "100px" }} />
-        <Typography variant="caption">
-          {"Relax! there's nothing left to do"}
+        <InsertEmoticonIcon sx={{ fontSize: "10em" }} />
+        <Typography variant="h6">
+          {"Relax! There's nothing left to do"}
         </Typography>
       </div>
     );

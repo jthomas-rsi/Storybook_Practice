@@ -14,6 +14,13 @@ export default {
     handleCheck: { action: "check box clicked" },
     handleStar: { action: "star icon clicked" },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ margin: "3em" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />;

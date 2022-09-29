@@ -9,6 +9,13 @@ export default {
   argTypes: {
     items: { control: false },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ margin: "3em" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 const Template: Story<ListProps> = (args) => <List {...args} />;
