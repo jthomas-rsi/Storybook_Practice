@@ -8,13 +8,13 @@ export default {
   component: ListItem,
   parameters: { controls: { sort: "alpha" } },
   argTypes: {
+    handleCheck: { action: "checkbox clicked", control: false },
+    handleStar: { action: "starr icon clicked", control: false },
     id: { control: false },
     secondaryAction: { control: false },
     sx: { control: false },
     starred: { control: false },
     checked: { control: false },
-    handleCheck: { action: "checkbox clicked", control: false },
-    handleStar: { action: "starr icon clicked", control: false },
   },
 } as Meta;
 

@@ -61,7 +61,7 @@ ListItemProps): JSX.Element => {
           </IconButton>
         )
       }
-      sx={{ border: "solid 1px black", backgroundColor: "white" }}
+      sx={{ border: "solid 1px black", backgroundColor: "#CDB4DB" }}
     >
       <ListItemIcon>
         {checkClick ? (
@@ -77,11 +77,13 @@ ListItemProps): JSX.Element => {
       <ListItemText
         primary={
           checkClick ? (
-            <Typography variant="subtitle1">
+            <Typography variant="subtitle1" sx={{ color: "black" }}>
               {`${itemText} ( Important Task )`}{" "}
             </Typography>
           ) : (
-            <Typography variant="subtitle1">{itemText}</Typography>
+            <Typography variant="subtitle1" sx={{ color: "black" }}>
+              {itemText}
+            </Typography>
           )
         }
         sx={{

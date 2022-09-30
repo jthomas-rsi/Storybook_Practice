@@ -37,14 +37,16 @@ const List = ({
         style={{
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "white",
+          backgroundColor: "#BDE0FE",
           padding: "1em",
         }}
       >
-        <Skeleton width={"90%"} height={60} />
-        <Skeleton width={"90%"} height={60} />
-        <Skeleton width={"90%"} height={60} />
-        <Skeleton width={"90%"} height={60} />
+        <Skeleton width={"90%"} height={60} animation="wave" />
+        <Skeleton width={"90%"} height={60} animation="wave" />
+        <Skeleton width={"90%"} height={60} animation="wave" />
+        <Skeleton width={"90%"} height={60} animation="wave" />
+        <Skeleton width={"90%"} height={60} animation="wave" />
+        <Skeleton width={"90%"} height={60} animation="wave" />
       </Stack>
     );
   }
@@ -55,27 +57,26 @@ const List = ({
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
-          backgroundColor: "white",
+          backgroundColor: "#BDE0FE",
           padding: "3em",
         }}
       >
+        <Typography variant="h6">{"Your list is empty! "}</Typography>
         <InsertEmoticonIcon sx={{ fontSize: "10em" }} />
-        <Typography variant="h6">
-          {"Relax! There's nothing left to do"}
-        </Typography>
+        <Typography variant="h6">{"Nothing left to do but Relax! "}</Typography>
       </div>
     );
   }
   return (
     <MUIList
       subheader={
-        <ListSubheader>
+        <ListSubheader sx={{ backgroundColor: "#BDE0FE" }}>
           <Typography variant="h4">Things To Do:</Typography>
         </ListSubheader>
       }
       sx={{
         padding: "3em",
-        backgroundColor: "white",
+        backgroundColor: "#BDE0FE",
       }}
     >
       {dummyTasks.map((item) => (
