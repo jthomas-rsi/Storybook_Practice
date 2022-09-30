@@ -1,10 +1,12 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactEventHandler, ReactNode, useState } from "react";
 
 import {
   ListItem as MUIListItem,
   ListItemIcon,
   ListItemText,
   IconButton,
+  Paper,
+  Typography,
 } from "@mui/material";
 
 import { SxProps, Theme } from "@mui/system";
@@ -21,10 +23,10 @@ export interface ListItemProps {
   starred?: boolean;
   itemText?: string;
   secondaryAction?: ReactNode;
-  divider?: boolean;
   sx?: SxProps<Theme>;
-  handleCheck?(): void;
-  handleStar?(): void;
+  // onClick?: ReactEventHandler;
+  handleCheck?: EventListener;
+  handleStar?: EventListener;
 }
 
 const ListItem = ({
@@ -32,9 +34,9 @@ const ListItem = ({
   itemText = "Item text",
   checked = false,
   starred = false,
-  divider = true,
   sx,
-}: ListItemProps): JSX.Element => {
+}: // onClick,
+ListItemProps): JSX.Element => {
   const [checkClick, setCheckClick] = useState(checked);
   const [starClick, setStarClick] = useState(starred);
 
@@ -48,7 +50,6 @@ const ListItem = ({
   return (
     <MUIListItem
       id={id}
-      divider={divider}
       secondaryAction={
         starClick ? (
           <IconButton onClick={() => handleStar()}>
@@ -60,7 +61,7 @@ const ListItem = ({
           </IconButton>
         )
       }
-      sx={sx}
+      sx={{ border: "solid 1px black", backgroundColor: "white" }}
     >
       <ListItemIcon>
         {checkClick ? (
@@ -74,7 +75,15 @@ const ListItem = ({
         )}
       </ListItemIcon>
       <ListItemText
-        primary={checkClick ? `${itemText} ( Important Task )` : itemText}
+        primary={
+          checkClick ? (
+            <Typography variant="subtitle1">
+              {`${itemText} ( Important Task )`}{" "}
+            </Typography>
+          ) : (
+            <Typography variant="subtitle1">{itemText}</Typography>
+          )
+        }
         sx={{
           textDecoration: starClick ? `line-through` : ` `,
         }}

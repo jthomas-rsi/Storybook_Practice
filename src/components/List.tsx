@@ -6,6 +6,9 @@ import {
   Skeleton,
   Stack,
   Typography,
+  Paper,
+  SxProps,
+  Theme,
 } from "@mui/material";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 
@@ -13,7 +16,8 @@ import ListItem from "./ListItem";
 
 export interface ListProps {
   items: Array<object>;
-  loading: boolean;
+  loading?: boolean;
+  sx?: SxProps<Theme>;
 }
 
 const dummyTasks = [
@@ -25,14 +29,22 @@ const dummyTasks = [
 const List = ({
   items = dummyTasks,
   loading = false,
+  sx,
 }: ListProps): JSX.Element => {
   if (loading) {
     return (
-      <Stack style={{ justifyContent: "center", alignItems: "center" }}>
-        <Skeleton width={"100%"} height={60} />
-        <Skeleton width={"100%"} height={60} />
-        <Skeleton width={"100%"} height={60} />
-        <Skeleton width={"100%"} height={60} />
+      <Stack
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "white",
+          padding: "1em",
+        }}
+      >
+        <Skeleton width={"90%"} height={60} />
+        <Skeleton width={"90%"} height={60} />
+        <Skeleton width={"90%"} height={60} />
+        <Skeleton width={"90%"} height={60} />
       </Stack>
     );
   }
@@ -43,6 +55,8 @@ const List = ({
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
+          backgroundColor: "white",
+          padding: "3em",
         }}
       >
         <InsertEmoticonIcon sx={{ fontSize: "10em" }} />
@@ -53,25 +67,27 @@ const List = ({
     );
   }
   return (
-    <div>
-      <MUIList
-        subheader={
-          <ListSubheader>
-            <Typography variant="h6">Things To Do:</Typography>
-          </ListSubheader>
-        }
-      >
-        {dummyTasks.map((item) => (
-          <ListItem
-            id={item.id}
-            key={item.id}
-            itemText={item.itemText}
-            checked={item.checked}
-            starred={item.starred}
-          />
-        ))}
-      </MUIList>
-    </div>
+    <MUIList
+      subheader={
+        <ListSubheader>
+          <Typography variant="h4">Things To Do:</Typography>
+        </ListSubheader>
+      }
+      sx={{
+        padding: "3em",
+        backgroundColor: "white",
+      }}
+    >
+      {dummyTasks.map((item) => (
+        <ListItem
+          id={item.id}
+          key={item.id}
+          itemText={item.itemText}
+          checked={item.checked}
+          starred={item.starred}
+        />
+      ))}
+    </MUIList>
   );
 };
 
